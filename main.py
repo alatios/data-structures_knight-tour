@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
-## To do:
-## 1. Implement time counter
-
 import numpy as np
 from math import floor
+import time
 
 ### KNIGHT ALLOWED MOVES (OFFSETS)
 allowedOffsetMoves = {(-2,-1),
@@ -706,14 +704,21 @@ print(board.GetRows())
 print(board.GetColumns())
 
 print("Building knight adjacency list...")
+
+tick = time.perf_counter()
 board.FindAdjacencyList()
 print("Building knight tour...")
 board.FindTour()
+tock = time.perf_counter()
+
 #print((board.GetTour()))
 print()
 board.PrintTour()
+print()
 
 print("ADL length:", len(board.GetAdjacencyList()))
 print("Tot. squares:", board.GetColumns() * board.GetRows())
 
 board.DebugTour()
+
+print(f"Path found in {tock - tick:0.4f} seconds.")
