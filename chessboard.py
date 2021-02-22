@@ -161,14 +161,6 @@ class Chessboard:
 
         ### Fix the edges as prescribed by the algorithm
         ## Relevant squares
-        #A1 = (4,7)
-        #A2 = (6,8)
-        #B1 = (7,7)
-        #B2 = (8,9)
-        #C1 = (7,5)
-        #C2 = (9,6)
-        #D1 = (5,4)
-        #D2 = (6,6)
         A1 = (bottomLeftBoard.GetColumns()-2, bottomLeftBoard.GetRows()+1)
         A2 = (bottomLeftBoard.GetColumns(),   bottomLeftBoard.GetRows()+2)
         B1 = (bottomLeftBoard.GetColumns()+1, bottomLeftBoard.GetRows()+1)
