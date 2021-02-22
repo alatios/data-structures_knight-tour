@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Runs a large number of knight tour evaluations through slurm on softload partition
 
-NARRAY=(6 8 10 12 20 40 60 100 250 500 1000 2000 5000 10000)
+NARRAY=(6 8 10 12 20 40 60 80 100 126 150 176 200 224 250 276 300 324 350 376 400 450 500 550 600 726 800 900 1000)
 
 echo "This will overwrite all existing output files. Are you sure you want to run this? y/[n]"
 read response
