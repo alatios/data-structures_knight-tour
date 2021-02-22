@@ -23,7 +23,6 @@ board.FindTour()
 ## Stop the clock
 tock = time.perf_counter()
 
-#print((board.GetTour()))
 ## This prints the tour. The only time it's useful is to ascertain
 ## at a glance that the script simply did not work. And we hope to
 ## have other systems in place to establish that, so it's really
