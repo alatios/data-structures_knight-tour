@@ -3,6 +3,7 @@
 import numpy as np
 from math import floor
 import time
+import sys
 
 ### KNIGHT ALLOWED MOVES (OFFSETS)
 allowedOffsetMoves = {(-2,-1),
@@ -697,7 +698,7 @@ class Chessboard:
         print("Non-repeating: \t", self.TourIsNonRepeating())
         print("Legal: \t\t", self.TourIsLegal())
 
-n = 200
+n = int(sys.argv[1])
 board = Chessboard(n,n)
 
 print(board.GetRows())
