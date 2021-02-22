@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+## Just a support file to outsource the long-winded six known tours
 
 ### KNIGHT ALLOWED MOVES (OFFSETS)
 allowedOffsetMoves = {(-2,-1),

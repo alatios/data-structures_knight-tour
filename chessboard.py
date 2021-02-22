@@ -26,6 +26,7 @@ def SplitSide(side):
 
 class Chessboard:
 
+    ## Bog-standard constructor and get/set methods, nothing to see here.
     def __init__(self, rows, columns):
         self.rows = rows
         self.columns = columns
@@ -50,10 +51,14 @@ class Chessboard:
     def GetColumns(self):
         return self.columns
 
+    ## Finds a closed&structured knight tour through the divide-and-conquer
+    ## algorith. Tour is stored as an undirected graph using an adjacency
+    ## lists data structure (a Python dictionary).
     def FindAdjacencyList(self):
         nRows = self.GetRows()
         nColumns = self.GetColumns()
 
+        ## Base of recursion: the six known tours.
         if (nRows == 6) and (nColumns == 6):
             self.SetAdjacencyList(path6x6)
             return
@@ -90,6 +95,7 @@ class Chessboard:
             self.SetAdjacencyList(path12x10)
             return
 
+        ## Split the chessboard according to the algorithm
         bottomRows, topRows = SplitSide(nRows)
         leftColumns, rightColumns = SplitSide(nColumns)
 
@@ -98,26 +104,33 @@ class Chessboard:
         bottomLeftBoard = Chessboard(bottomRows, leftColumns)
         bottomRightBoard = Chessboard(bottomRows, rightColumns)
 
+        ## The divide-and-conquer approach does its magic
         topLeftBoard.FindAdjacencyList()
         topRightBoard.FindAdjacencyList()
         bottomLeftBoard.FindAdjacencyList()
         bottomRightBoard.FindAdjacencyList()
 
-        ## Build new adjacency list from bottom left, makes sense for coordinates
+        ## Now to build the complete path from these four
+        ## First we save the adjacency lists we just found
         bottomLeftADL = bottomLeftBoard.GetAdjacencyList()
         bottomRightADL = bottomRightBoard.GetAdjacencyList()
         topLeftADL = topLeftBoard.GetAdjacencyList()
         topRightADL = topRightBoard.GetAdjacencyList()
 
+        ## Why do we need four new ones? Because we need to change the coordinates
         newBottomLeftADL = {}
         newBottomRightADL = {}
         newTopLeftADL = {}
         newTopRightADL = {}
 
+        ## Since we're using coordinates based on chess algebraic notation,
+        ## it only makes sense to start from bottom left (i.e. (1,1))
         for position in bottomLeftADL:
             newBottomLeftADL[position] = []
             for adjacentSquare in bottomLeftADL[position]:
                 newBottomLeftADL[position].append(adjacentSquare)
+
+        ## For the other three, just add the appropriate offsets
 
         for position in bottomRightADL:
             ## Add columns of bottom-left to column indexes of bottom-right
@@ -146,7 +159,7 @@ class Chessboard:
                 newAdjacentSquare = tuple(map(lambda i, j: int(i + j), adjacentSquare, (bottomLeftBoard.GetColumns(), bottomLeftBoard.GetRows())))
                 newTopRightADL[newPosition].append(newAdjacentSquare)
 
-        ### Fix the edges
+        ### Fix the edges as prescribed by the algorithm
         ## Relevant squares
         #A1 = (4,7)
         #A2 = (6,8)
@@ -189,21 +202,28 @@ class Chessboard:
         newBottomRightADL[C1].append(D1)
         newBottomLeftADL[D1].append(C1)
 
+        ## Join the four ADLs and job's done for the day
         newCompleteADL = {**newBottomLeftADL, **newBottomRightADL, **newTopLeftADL, **newTopRightADL}
         self.SetAdjacencyList(newCompleteADL)
         return
 
     ## Given a path adjacency list, develop (heh) a direct tour of the board
+    ## Reminder: paths are undirected, tours are directed
     def FindTour(self):
+        ## Start at bottom left. Conventional, any starting point will do
         startingPosition = (1,1)
         currentPosition = startingPosition
         adjacencyList = self.GetAdjacencyList()
+
+        ## Visited squares dictionary
         visitedSquares = {startingPosition: True}
         tour = {}
 
         while True:
             foundNextStep = False
 
+            ## Each position has two squares it can reach in a path (forward/backward)
+            ## Pick the first non-visited one, assuming one exists
             for square in adjacencyList[currentPosition]:
                 if square not in visitedSquares:
                     visitedSquares[square] = True
@@ -223,20 +243,28 @@ class Chessboard:
                     print("ERROR: position", currentPosition, "can't go anywhere.")
                     break
 
+        ## Just a simple check to warn us if the tour ended too soon.
+        ## Either something went wrong when connecting the sub-paths
+        ## or the programmer made a major screw-up. What a loser!
         if len(visitedSquares) != (self.GetRows() * self.GetColumns()):
             print("Ah-le-le?! The tour ends after", len(visitedSquares), "steps instead of", self.GetRows() * self.GetColumns() ,".")
 
         self.SetTour(tour)
 
-    ## Print tour matrix. Number of each square is the step when the knight visits it
+    ## Print tour matrix. Number of each square is the step in which the knight visits it
     def PrintTour(self):
         nextStep = self.GetTour()
+        ## Starting position is arbitrary
         startingPosition = (1,1)
         currentPosition = nextStep[startingPosition]
 
+        ## Fill a matrix with zeros
         tourMatrix = np.zeros((self.GetRows(),self.GetColumns()),int)
 
+        ## Dictionary of steps
         visitedPositions = {startingPosition: 1}
+
+        ## Fill the first step in the matrix
         tourMatrix[self.GetRows()-startingPosition[1],startingPosition[0]-1] = 1
         positionCounter = 1
 
@@ -312,7 +340,6 @@ class Chessboard:
         previousPosition = (1,1)
         currentPosition = tourNextStep[previousPosition]
 
-
         ## Skip first position because it's also the last
         isLegal = True
 
@@ -326,6 +353,7 @@ class Chessboard:
 
         return isLegal
 
+    ## Combine all previous checks for quick reference
     def DebugTour(self):
         print("Complete: \t", self.TourIsComplete())
         print("Closed: \t", self.TourIsClosed())
