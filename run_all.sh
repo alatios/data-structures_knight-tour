@@ -19,7 +19,8 @@ esac
 rm -rf outputs/out*;
 
 for n in ${NARRAY[@]}; do
-	sbatch --partition=softload --nodelist=haas --output=./outputs/out_$n.txt --cpus-per-task=1 --mem-per-cpu=1G --time=2-0:0 --wrap="hostname; python3 main.py $n"
+	echo "Running chessboard with side $n...";
+	python3 main.py $n > outputs/out_$n.txt
 done
 
 exit 0
