@@ -1,4 +1,3 @@
-haas
 Rows: 8
 Columns: 8
 Building knight adjacency list...

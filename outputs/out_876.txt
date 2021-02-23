@@ -1,4 +1,3 @@
-haas
 Rows: 876
 Columns: 876
 Building knight adjacency list...
@@ -19,4 +18,4 @@ Closed: 	 True
 Structured: 	 True
 Non-repeating: 	 True
 Legal: 		 True
-Path found in 99.0047 seconds.
+Path found in 34.1696 seconds.
