@@ -1,0 +1,25 @@
+haas
+Rows: 10
+Columns: 10
+Building knight adjacency list...
+Building knight tour...
+
+[[ 80  33  48  45  82  35  18  43  84  87]
+ [ 47  50  81  34  17  44  83  86  67  42]
+ [ 32  79  46  49  36   5  14  19  88  85]
+ [ 51  54  31   6  21  16  37  66  41  68]
+ [ 78   9  52  23   4  13  20  15  38  89]
+ [ 53  30  55  10   7  22  65  60  69  40]
+ [ 56  77   8   3  24  59  12  39  90  71]
+ [ 29   2  27  58  11  64  61  70  93  96]
+ [ 76  57 100  63  74  25  98  95  72  91]
+ [  1  28  75  26  99  62  73  92  97  94]]
+
+ADL length: 100
+Tot. squares: 100
+Complete: 	 True
+Closed: 	 True
+Structured: 	 True
+Non-repeating: 	 True
+Legal: 		 True
+Path found in 0.0003 seconds.

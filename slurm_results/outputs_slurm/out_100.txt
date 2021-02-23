@@ -1,0 +1,22 @@
+haas
+Rows: 100
+Columns: 100
+Building knight adjacency list...
+Building knight tour...
+
+[[ 7702  7695  7692 ...  5019  5044  5001]
+ [ 7693  7706  7701 ...  5000  5005  5018]
+ [ 7696  7703  7694 ...  5017  5002  5045]
+ ...
+ [ 9993     2     5 ...  2394  2387  2392]
+ [    4    19 10000 ...  2385  2396  2357]
+ [    1  9992     3 ...  2356  2393  2386]]
+
+ADL length: 10000
+Tot. squares: 10000
+Complete: 	 True
+Closed: 	 True
+Structured: 	 True
+Non-repeating: 	 True
+Legal: 		 True
+Path found in 0.4954 seconds.
