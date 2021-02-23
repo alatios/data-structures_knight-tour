@@ -52,4 +52,4 @@ Closed: 	 True
 Structured: 	 True
 Non-repeating: 	 True
 Legal: 		 True
-Path found in 0.0064 seconds.
+Path found in 0.0084 seconds.

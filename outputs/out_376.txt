@@ -19,4 +19,4 @@ Closed: 	 True
 Structured: 	 True
 Non-repeating: 	 True
 Legal: 		 True
-Path found in 13.6475 seconds.
+Path found in 13.6214 seconds.

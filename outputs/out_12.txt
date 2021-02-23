@@ -24,4 +24,4 @@ Closed: 	 True
 Structured: 	 True
 Non-repeating: 	 True
 Legal: 		 True
-Path found in 0.0016 seconds.
+Path found in 0.0017 seconds.
