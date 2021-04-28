@@ -17,4 +17,4 @@ Closed: 	 True
 Structured: 	 True
 Non-repeating: 	 True
 Legal: 		 True
-Path found in 0.0000 seconds.
+Path found in 0.0001 seconds.

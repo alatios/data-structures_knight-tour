@@ -1,0 +1,21 @@
+Rows: 1750
+Columns: 1750
+Building knight adjacency list...
+Building knight tour...
+
+[[2302398 2302391 2302388 ... 1531257 1531232 1531275]
+ [2302389 2302402 2302397 ... 1531276 1531271 1531258]
+ [2302392 2302399 2302390 ... 1531259 1531274 1531231]
+ ...
+ [3062493       2       5 ...  760168  760161  760166]
+ [      4      19 3062500 ...  760159  760170  760131]
+ [      1 3062492       3 ...  760130  760167  760160]]
+
+ADL length: 3062500
+Tot. squares: 3062500
+Complete: 	 True
+Closed: 	 True
+Structured: 	 True
+Non-repeating: 	 True
+Legal: 		 True
+Path found in 162.0109 seconds.

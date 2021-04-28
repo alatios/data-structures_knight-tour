@@ -1,0 +1,21 @@
+Rows: 2000
+Columns: 2000
+Building knight adjacency list...
+Building knight tour...
+
+[[1001224 1001231 1001234 ... 2000019 2000044 2000001]
+ [1001233 1001220 1001225 ... 2000000 2000005 2000018]
+ [1001230 1001223 1001232 ... 2000017 2000002 2000045]
+ ...
+ [3999993       2       5 ... 2998732 2998739 2998734]
+ [      4      19 4000000 ... 2998741 2998730 2998769]
+ [      1 3999992       3 ... 2998770 2998733 2998740]]
+
+ADL length: 4000000
+Tot. squares: 4000000
+Complete: 	 True
+Closed: 	 True
+Structured: 	 True
+Non-repeating: 	 True
+Legal: 		 True
+Path found in 207.7271 seconds.
